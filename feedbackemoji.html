@@ -1,0 +1,136 @@
+<html>
+    <head>
+    <meta character="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&display=swap" rel="stylesheet">
+<style>
+    body{
+        margin:0;
+        padding: 0;
+        background: lightgrey;
+        display: flex;
+        
+        justify-content: center;
+        min-height: 100vh;//required for setting alignitems as centeri.e. vertically
+        align-items: center;
+        font-family: monospace;
+    }
+    .container{
+        background: lightyellow;
+        width:85%;
+        padding:50px;
+        text-align: center;
+        height:400px;
+        margin:90px;
+    }
+    .ratingc{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        margin:20px 50px;
+    }
+    
+    .rating{
+        margin:10px 50px;
+        padding: 20px;
+    }
+    .rating:hover,
+    .rating.active{
+        background:rgba(0,0,0,0.2);
+        border-radius: 5px;
+        box-shadow: 0 3px 4px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+    img{
+        width:70px;
+        height:70px;
+        margin:7px;
+        
+    }
+    .btnn{
+        background: black;
+        color:#fff;
+        padding:15px;
+        border-radius: 5px;
+        
+    }
+    .btnn:hover{
+        background: rgba(0,0,0,0.4);
+        color:black;
+        border: none;
+        transition: all 0.3s ease;
+    }
+    
+    
+        </style>
+    </head>
+    <body>
+    <div class="container" id="container">
+    <h1>Feedback UI</h1>
+    <div class="ratingc" id="ratingc">
+    <div class="rating" id="rating">
+        <img src="https://cdn-icons-png.flaticon.com/512/166/166527.png">
+        <small>Unhappy</small>
+        </div> 
+        <div class="rating" id="rating">
+        <img src="https://cdn-icons-png.flaticon.com/512/1791/1791385.png">
+            <small>Neutral</small>
+        </div> 
+    <div class="rating" id="rating">
+        <img src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+        <small>Happy</small>
+        </div> 
+      
+    </div>
+       <button class="btnn" id="btnn">Submit response</button>  
+    </div>
+    <script>
+    const selecteds=document.querySelectorAll(".rating");
+    const btn=document.getElementById("btnn");
+    let cid=document.getElementById("container");
+    let selectedrating="";
+        
+    selecteds.forEach((rating)=>{
+        rating.addEventListener("click",(event)=>{
+            removeactive();
+            selectedrating=event.target.innerText ||event.target.parentNode.innerText;
+            event.target.classList.add("active");
+            event.target.parentNode.classList.add("active");
+        });
+    });
+        
+        
+btnn.addEventListener("click",()=>{
+    if(selectedrating!=""){
+    cid.innerHTML=`
+    <strong>Thank you</strong><br>
+    <br>
+    <strong>Feedback:${selectedrating}<strong>`
+    }
+})
+        
+        
+function removeactive(){
+            selecteds.forEach((rating)=>{
+                rating.classList.remove("active");
+            })
+        }
+        
+ </script>
+    
+    
+    
+    
+    </body>
+    
+    
+    
+</html>
